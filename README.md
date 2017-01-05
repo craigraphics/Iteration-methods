@@ -17,6 +17,9 @@ Several methods take as arguments functions to be called back while processing t
 The `forEach()` method executes a provided function once for each array element.
 
 ```JavaScript
+// calculate the area of each image and store it in a new array called 'areas'. 
+// The area of an image can be calculated as 'image.height * image.width'.
+
 var images = [
   { height: 10, width: 30 },
   { height: 20, width: 90 },
@@ -94,6 +97,7 @@ The `filter()` method creates a new array with all elements that pass the test i
 
 ```JavaScript
 // create a new array that only contains numbers greater than 50.
+
 var numbers = [15, 25, 35, 45, 55, 65, 75, 85, 95];
 
 var filteredNumbers = numbers.filter(function(number) {
@@ -170,6 +174,7 @@ callback is invoked with three arguments: the value of the element, the index of
 
 ```JavaScript
 // Find the account with a balance of 12 and assign it to the variable 'account'.
+
 var accounts = [
   { balance: -10 },
   { balance: 12 },
@@ -182,7 +187,8 @@ var account = accounts.find(account => account.balance === 12);
 `find` does not mutate the array on which it is called.
 
 ```JavaScript
-Write a 'findWhere' function that achieves this shorthand approach.  'findWhere' should return the found object.
+// Write a 'findWhere' function that achieves this shorthand approach.  
+// 'findWhere' should return the found object.
 
 var ladders = [
   { id: 1, height: 20 },
@@ -204,6 +210,7 @@ The every() method tests whether all elements in the array pass the test impleme
 ```JavaScript
 // Given an array of users, return 'true' if every user has submitted a request form.  
 // Assign the result to the variable 'hasSumbmitted'.
+
 var users = [
   { id: 21, hasSubmitted: true },
   { id: 62, hasSubmitted: false },
@@ -260,6 +267,8 @@ console.log(totalDistance); // 47
 The first time the callback is called, accumulator and currentValue can be one of two values. If initialValue is provided in the call to reduce, then accumulator will be equal to initialValue and currentValue will be equal to the first value in the array. If no initialValue was provided, then accumulator will be equal to the first value in the array and currentValue will be equal to the second.
 
 ```JavaScript
+// Create an object that tallies the number of sitting and standing desks.
+
 var desks = [
   { type: 'sitting' },
   { type: 'standing' },
