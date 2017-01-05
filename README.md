@@ -28,6 +28,8 @@ images.forEach(function(image) {
   var area = image.height * image.width;
   areas.push(area);
 });
+
+console.log(areas); // [300, 1800, 1728]
 ```
 
 `forEach()` executes the provided callback once for each element present in the array in ascending order. It is not invoked for index properties that have been deleted or are uninitialized (i.e. on sparse arrays).
@@ -55,6 +57,8 @@ var trips = [
 var speeds = trips.map(function(trip) {
   return trip.distance / trip.time;    
 });
+
+console.log(speeds); // [3.4, 1.8, 2.36]
 ```
 `map` calls a provided callback function once for each element in an array, in order, and constructs a new array from the results. callback is invoked only for indexes of the array which have assigned values, including undefined. It is not called for missing elements of the array (that is, indexes that have never been set, which have been deleted or which have never been assigned a value).
 
@@ -72,9 +76,7 @@ If a thisArg parameter is provided to map, it will be passed to callback when in
 // Pluck should accept an array and a string representing a property name 
 // and return an array containing that property from each object. 
 
-// example:
-// var paints = [ { color: 'red' }, { color: 'blue' }, { color: 'yellow' }];
-// pluck(paints, 'color'); // returns ['red', 'yellow', 'blue'];
+var paints = [ { color: 'red' }, { color: 'blue' }, { color: 'yellow' }]; 
 
 function pluck(array, property) {
   var result = array.map(function(prop) {
@@ -82,6 +84,8 @@ function pluck(array, property) {
   });
   return result;
 }
+
+pluck(paints, 'color'); // returns ['red', 'yellow', 'blue'];
 ```
 
 ## filter()
@@ -109,6 +113,8 @@ var users = [
 var filteredUsers = users.filter(function(user) {
     return user.admin === true;
 });
+
+console.log(filteredUsers); // [{ admin: true, id: 1 }, { admin: true, id: 5 }]
 ```
 
 `filter()` calls a provided callback function once for each element in an array, and constructs a new array of all the values for which callback returns a value that coerces to true. callback is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values. Array elements which do not pass the callback test are simply skipped, and are not included in the new array.
@@ -154,6 +160,8 @@ var users = [
 ];
 
 var admin = users.find(user => user.admin);
+
+console.log(admin); // { admin: true, id: 3 }
 ```
 
 The `find` method executes the callback function once for each element present in the array until it finds one where callback returns a true value. If such an element is found, find immediately returns the value of that element. Otherwise, `fin`d returns undefined. callback is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values.
