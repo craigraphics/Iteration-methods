@@ -1,5 +1,5 @@
 # ES6 Iteration Methods
-functional programming and Array iteration methods (forEach, map, filter, find, every, some, reduce)
+Functional programming and Array iteration methods in Javascript ES6 (forEach, map, filter, find, every, some, reduce)
 
 - [forEach()](#foreach)
 - [map()](#map)
