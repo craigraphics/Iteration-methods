@@ -323,4 +323,36 @@ unique(numbers); // returns [1, 2, 3, 4]
 
 If the array is empty and no initialValue was provided, TypeError would be thrown. If the array has only one element (regardless of position) and no initialValue was provided, or if initialValue is provided but the array is empty, the solo value would be returned without calling callback.
 
-It is usually safer to provide an initial value because there are three possible outputs without initialValue, as shown in the following example.
+It is usually safer to provide an initial value because there are three possible outputs without initialValue.
+
+```JavaScript
+// Simple Balanced Parentheses problems
+
+// Balanced parentheses means that each opening symbol
+// has a corresponding closing symbol and the pairs
+// of parentheses are properly nested.
+
+// Write a function that decides wheter or not the parenthesis are balanced on a given a string.
+
+var balancedParens = '(((())))';
+var unbalancedParens = '(((((())';
+
+function parChecker( string ) {
+  return !string.split('').reduce(function(previous, char) {
+    if (previous < 0) {
+      return previous;
+    }        
+    switch(char) {     
+      case '(':
+        return ++previous;
+      case ')':
+        return --previous;
+    }
+    return previous;
+    
+  }, 0);
+}
+      
+parChecker( balancedParens ) // true
+parChecker( unbalancedParens ) // false
+```
