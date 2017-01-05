@@ -1,4 +1,5 @@
 # ES6 Iteration Methods
+
 Functional programming and Array iteration methods in Javascript ES6 (forEach, map, filter, find, every, some, reduce)
 
 - [forEach()](#foreach)
@@ -10,10 +11,12 @@ Functional programming and Array iteration methods in Javascript ES6 (forEach, m
 - [reduce()](#reduce)
 
 ## Introduction
+
 Several methods take as arguments functions to be called back while processing the array. When these methods are called, the length of the array is sampled, and any element added beyond this length from within the callback is not visited. Other changes to the array (setting the value of or deleting an element) may affect the results of the operation if the method visits the changed element afterwards. While the specific behavior of these methods in such cases is well-defined, you should not rely upon it so as not to confuse others who might read your code. If you must mutate the array, copy into a new array instead.
 
 
 ## forEach()
+
 The `forEach()` method executes a provided function once for each array element.
 
 ```JavaScript
@@ -32,7 +35,7 @@ images.forEach(function(image) {
   areas.push(area);
 });
 
-console.log(areas); // [300, 1800, 1728]
+areas; // returns [300, 1800, 1728]
 ```
 
 `forEach()` executes the provided callback once for each element present in the array in ascending order. It is not invoked for index properties that have been deleted or are uninitialized (i.e. on sparse arrays).
@@ -44,6 +47,7 @@ callback is invoked with three arguments:
 - the array being traversed
 
 ## map()
+
 The `map()` method creates a new array with the results of calling a provided function on every element in this array.
 
 ```JavaScript
@@ -61,7 +65,7 @@ var speeds = trips.map(function(trip) {
   return trip.distance / trip.time;    
 });
 
-console.log(speeds); // [3.4, 1.8, 2.36]
+speeds; // returns [3.4, 1.8, 2.36]
 ```
 `map` calls a provided callback function once for each element in an array, in order, and constructs a new array from the results. callback is invoked only for indexes of the array which have assigned values, including undefined. It is not called for missing elements of the array (that is, indexes that have never been set, which have been deleted or which have never been assigned a value).
 
@@ -103,6 +107,8 @@ var numbers = [15, 25, 35, 45, 55, 65, 75, 85, 95];
 var filteredNumbers = numbers.filter(function(number) {
   return number > 50;
 });
+
+filteredNumbers // returns [55, 65, 75, 85, 95]
 ```
 
 ```JavaScript
@@ -118,7 +124,7 @@ var filteredUsers = users.filter(function(user) {
     return user.admin === true;
 });
 
-console.log(filteredUsers); // [{ admin: true, id: 1 }, { admin: true, id: 5 }]
+filteredUsers; // returns [{ admin: true, id: 1 }, { admin: true, id: 5 }]
 ```
 
 `filter()` calls a provided callback function once for each element in an array, and constructs a new array of all the values for which callback returns a value that coerces to true. callback is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values. Array elements which do not pass the callback test are simply skipped, and are not included in the new array.
@@ -148,10 +154,11 @@ var lessThanFifteen = reject(numbers, function(number) {
   return number > 15;
 }); 
 
-lessThanFifteen // [ 10 ];
+lessThanFifteen // returns [ 10 ];
 ```
 
 ### find() 
+
 The `find()` method returns a value of the first element in the array that satisfies the provided testing function. Otherwise undefined is returned.
 
 ```JavaScript
@@ -165,7 +172,7 @@ var users = [
 
 var admin = users.find(user => user.admin);
 
-console.log(admin); // { admin: true, id: 3 }
+admin; // returns { admin: true, id: 3 }
 ```
 
 The `find` method executes the callback function once for each element present in the array until it finds one where callback returns a true value. If such an element is found, find immediately returns the value of that element. Otherwise, `fin`d returns undefined. callback is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values.
@@ -182,6 +189,7 @@ var accounts = [
 ];
 
 var account = accounts.find(account => account.balance === 12);
+account; // returns { balance: 12 }
 ```
 
 `find` does not mutate the array on which it is called.
@@ -202,9 +210,10 @@ function findWhere(array, criteria) {
   });
 }
 
-findWhere(ladders, { height: 25 }); // result: { id:3, height: 25 }
+findWhere(ladders, { height: 25 }); // returns: { id:3, height: 25 }
 ```
 ### every()
+
 The every() method tests whether all elements in the array pass the test implemented by the provided function.
 
 ```JavaScript
@@ -218,13 +227,14 @@ var users = [
 ];
 
 var hasSubmitted = users.every(user => hasSubmitted); 
-console.log(hasSubmitted); // true // false
+hasSubmitted; // returns false
 ```
 
 The `every` method executes the provided callback function once for each element present in the array until it finds one where callback returns a falsy value. If such an element is found, the every method immediately returns false. Otherwise, if callback returns a truthy value for all elements, every returns true. callback is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values.
 `every` does not mutate the array on which it is called.
 
 ### some()
+
 The `some()` method tests whether some element in the array passes the test implemented by the provided function.
 
 ```JavaScript
@@ -238,12 +248,13 @@ var requests = [
 ];
 
 var inProgress = requests.some(request => request.status === 'pending'); 
-console.log(inProgress); // true
+inProgress; // returns true
 ```
 `some()` executes the callback function once for each element present in the array until it finds one where callback returns a truthy value (a value that becomes true when converted to a Boolean). If such an element is found, some() immediately returns true. Otherwise, some() returns false. callback is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values.
 `some()` does not mutate the array on which it is called.
 
 ### reduce() 
+
 The `reduce()` method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
 
 ```JavaScript
@@ -255,7 +266,7 @@ var totalDistance = trips.reduce(function(previous, trip) {
     return previous += trip.distance;
 }, 0); 
 
-console.log(totalDistance); // 47
+totalDistance; // returns 47
 ```
 `reduce` executes the callback function once for each element present in the array, excluding holes in the array, receiving four arguments:
 
@@ -287,7 +298,7 @@ var deskTypes = desks.reduce(function(previous, desk) {
     return previous;
 }, { sitting: 0, standing: 0 });
 
-console.log(deskTypes); // { sitting: 3, standing: 2 }
+deskTypes; // returns { sitting: 3, standing: 2 }
 ```
 
 Note: If initialValue isn't provided, reduce will execute the callback function starting at index 1, skipping the first index. If initialValue is provided, it will start at index 0.
@@ -307,7 +318,7 @@ function unique(array) {
   }, [])
 }
 
-console.log(unique(numbers)); // [1, 2, 3, 4]
+unique(numbers); // returns [1, 2, 3, 4]
 ```
 
 If the array is empty and no initialValue was provided, TypeError would be thrown. If the array has only one element (regardless of position) and no initialValue was provided, or if initialValue is provided but the array is empty, the solo value would be returned without calling callback.
